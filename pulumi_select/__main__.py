@@ -8,9 +8,6 @@ import re
 def main(args=None):
     click.secho('Pulumi preview in progress ...', fg='green')
     with click_spinner.spinner():
-        # Hack for zsh & atuin
-        if os.environ.get('ATUIN_SESSION') is not None and os.environ.get('SHELL') == "/bin/zsh":
-            subprocess.call('echoti rmkx',shell=True,executable='/bin/zsh')
         subprocess.call('pulumi preview -j > /tmp/preview.json',shell=True,executable='/bin/zsh')
 
     create = []
@@ -41,10 +38,6 @@ def main(args=None):
     pulumi_command = "pulumi up "
     for answer in answers['pulumiup']:
         pulumi_command += "-t "+ answer + " "
-
-    # Hack for zsh & atuin
-    if os.environ.get('ATUIN_SESSION') is not None and os.environ.get('SHELL') == "/bin/zsh":
-            subprocess.call('echoti smkx',shell=True,executable='/bin/zsh')
 
     click.secho(pulumi_command, fg='green')
 
