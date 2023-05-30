@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'pulumi_select',
   packages = ['pulumi_select'],
-  version = '0.1.3', 
+  version = '0.1.6', 
   license='WTFPL',
   description = 'dynamically select urns to apply from a pulumi preview',
   author = 'romainrbr',
